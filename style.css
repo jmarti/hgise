@@ -1,0 +1,1270 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 - Reset
+2.0 - Typography
+3.0 - Elements
+4.0 - Header
+5.0 - Home
+	5.1 - Featured
+6.0 - Projects
+	6.1 - Video sections
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.0 - Reset
+--------------------------------------------------------------*/
+/*
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+*/
+html {
+	font-size: 62.5%; /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
+	overflow-y: scroll; /* Keeps page centered in all browsers regardless of content height */
+	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+	-ms-text-size-adjust:     100%; /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+}
+
+*,
+*:before,
+*:after { /* apply a natural box layout model to all elements; see http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+	-webkit-box-sizing: border-box; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
+	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
+	box-sizing:         border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	background-color: #fff;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+	display: block;
+}
+
+ol,
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+table { /* tables still need 'cellspacing="0"' in the markup */
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+}
+
+blockquote,
+q {
+	quotes: "" "";
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:hover,
+a:active {
+	outline: 0;
+}
+
+a img {
+	border: 0;
+}
+
+
+
+/*--------------------------------------------------------------
+2.0 - Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	font-size: 16px;
+	font-size: 1.6rem;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+	font-family: 'Tienne', serif;
+	font-weight: 600;
+	text-align: center;
+	color: #005C90;
+}
+
+h2 {
+	font-size: 2.625em;
+	margin: 0;
+	background: #fff;
+	padding-top: 55px;
+
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+h4 {
+	font-size: 1.1em;
+	font-family: 'Tienne', serif;
+	font-weight: 300;
+	color: #005C90;
+}
+
+.module_blue h1,
+.module_blue h2,
+.module_blue h3,
+.module_blue h4 {
+	color: #F7F7F7;
+}
+
+/*--------------------------------------------------------------
+3.0 - Elements
+--------------------------------------------------------------*/
+body {
+	background: url('/wp-content/themes/hgise/images/header.png') no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+li {
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 10px;
+	padding-right: 10px; 
+}
+
+section {
+	margin-top: 0px;
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+section.wrapper {
+	padding-top: 0;
+}
+
+section.featured {
+	background-color: #F7F7F7;
+}
+
+section.about {
+	background-color: #fff;
+}
+
+.single .module_white {
+	padding-bottom: 0;
+}
+
+.module_blue {
+	background: url('images/module_blue.png');
+	color: #fff;
+}
+
+.home .rhino-container {
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+}
+
+.rhino-container {
+	margin: 0 !important;
+	
+}
+
+.download {
+	display: block;
+	margin: 15px auto;
+	text-align: center;
+}
+
+.download a {
+	background: url('/wp-content/themes/hgise/images/download.png') no-repeat 12px center;
+	text-align: center;
+	color: #DB9249;
+	padding-left: 31px;
+	display: inline-block;
+	padding-top: 6px;
+	width: 242px;
+	height: 45px;
+	border: #DB9249 3px solid;
+	border-radius: 21px;
+	padding-right: 3px;
+}
+
+.download a:hover {
+	color: #fff;
+	background: url('/wp-content/themes/hgise/images/download_hover.png') no-repeat 12px center #DB9249;
+    transition: background-color 200ms ease-in;
+    transition: color 100ms ease-in;
+}
+
+.accordionButton {
+	cursor: pointer;
+}
+
+/*--------------------------------------------------------------
+4.0 - Header
+--------------------------------------------------------------*/
+header {
+	padding: 29px 0;
+	height: 200px;
+}
+
+header h1 {
+	padding: 10px 0 7px;
+	background: url('/wp-content/themes/hgise/images/logo_bg.png') repeat;
+}
+
+.logo {
+	display: block;
+	width: 200px;
+	height: 80px;
+	background-image: url('/wp-content/themes/hgise/images/hgise_logo.png');
+	text-indent: -9999px;
+	margin: 0 auto;
+}
+
+
+/*--------------------------------------------------------------
+5.0 - Home
+--------------------------------------------------------------*/
+
+.home section {
+	padding-bottom: 70px;
+}
+
+.home h2 {
+	margin-bottom: 30px;
+	padding-top: 0px;
+}
+
+.home .areas .project {
+	background-size: cover;
+}
+
+/*--------------------------------------------------------------
+5.1 - Featured
+--------------------------------------------------------------*/
+.featured h2 {
+	display: none;
+}
+
+.featured article {
+	display: inline-block;
+	margin: 0 26px 0 27px;
+}
+
+.featured article div {
+	background-color: #f0f0f0;
+}
+
+.featured ul {
+	width: 257px;
+	height: 249px;
+}
+
+.featured ul iframe {
+	width: 257px;
+	height: 249px;
+	position: relative;
+
+}
+
+.featured ul li a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+}
+
+.featured ul li a span .item_description {
+	display: none;
+}
+
+.featured ul li a:hover .item_description {
+	display: inline-block;
+}
+
+.featured ul li span {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: url('images/module_blue.png');
+	color: #fff;
+	padding: 12px 15px;
+	height: 82px;
+}
+
+.featured ul li a:hover span.with_description {
+	height: auto;
+}
+
+.featured ul li span p {
+	margin: 0;
+	color: #f7f7f7;
+	font-weight: 200;
+}
+
+.featured .item_description {
+	font-size: 0.9em;
+	font-weight: 300;
+}
+
+/*--------------------------------------------------------------
+5.2 - Areas
+--------------------------------------------------------------*/
+
+.areas {
+	background: url('images/module_blue.png');
+}
+
+.areas h2 {
+	color: #fff;
+	font-weight: 600;
+	background: none;
+}
+
+/*tabs*/
+
+#areas-type ul {
+	float: left;
+	width: 200px;
+	margin: 0;
+}
+
+#areas-type li {
+	list-style: none;
+	margin-bottom: 2px;
+
+}
+
+#areas-type li a {
+	display: inline-block;
+	padding: 20px 0 16px 60px;
+	width: 100%;
+	background-color: #4F4F4E;
+	border-radius: 8px 0px 0px 8px;
+	color: #F7F7F7;
+	height: 60px;
+	font-family: 'Tienne', serif;
+	font-weight: 400;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.55);
+}
+
+#areas-type li.ui-state-hover a {
+	background-color: #6B6B6B;
+}
+
+#areas-type li.ui-state-active a {
+	background-color: #fff;
+	color: #6a6a6a;
+}
+
+li.urbanization a {
+	background: url('/wp-content/themes/hgise/images/urbanization_icon.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.urbanization.ui-state-active a {
+	background: url('/wp-content/themes/hgise/images/urbanization_icon_active.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.borders a {
+	background: url('/wp-content/themes/hgise/images/borders_icon.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.borders.ui-state-active a {
+	background: url('/wp-content/themes/hgise/images/borders_icon_active.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.population a {
+	background: url('/wp-content/themes/hgise/images/population_icon.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.population.ui-state-active a {
+	background: url('/wp-content/themes/hgise/images/population_icon_active.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.transport a {
+	background: url('/wp-content/themes/hgise/images/transport_icon.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+li.transport.ui-state-active a {
+	background: url('/wp-content/themes/hgise/images/transport_icon_active.png') no-repeat 10px center;
+	background-size: 40px;
+}
+
+#areas-type div {
+	display: inline-block;
+	width: 740px;
+	background-color: #fff;
+	min-height: 435px;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.55);
+}
+
+#areas-type a.project {
+	display: inline-block;
+}
+
+.project  {
+	width: 220px;
+	height: 185px;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.15);
+	margin: 20px 8px;
+	position: relative;
+}
+
+.project p {
+	background: url('images/bg_orange.png');
+	position: absolute;
+		bottom: 0;
+	width: 100%;
+	color: #f7f7f7;
+	font-weight: 200;
+	padding: 12px 15px;
+	height: 72px;
+	margin: 0;
+}
+
+.first-in-row {
+	margin: 20px 8px 20px 15px;
+}
+
+.last-in-row {
+	margin: 20px 15px 20px 8px;
+}
+
+#areas-type p.project {
+	background: url('/images/project_p_bg.png') repeat; 
+}
+
+#areas-type div {
+	padding: 0 15px;
+}
+
+/*--------------------------------------------------------------
+5.3 - About us
+--------------------------------------------------------------*/
+
+.about {
+	clear: both;
+}
+
+.about .description {
+	-webkit-column-count: 2;
+	   -moz-column-count: 2;
+			column-count: 2;
+	-webkit-column-gap: 40px;
+	   -moz-column-gap: 40px;
+			column-gap: 40px;
+	margin-bottom: 40px;
+}
+
+.about ul {
+	display: block;
+	list-style-type: disc;
+		-webkit-margin-before: 1em;
+		-webkit-margin-after: 1em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		-webkit-padding-start: 40px;
+}
+
+.about .description p:first-of-type {
+	margin-top: 0;
+}
+
+.about .description h4 {
+	margin-bottom: 0;
+	margin-top: 50px;
+	font-weight: 600;
+}
+
+/*--------------------------------------------------------------
+5.4 - Members
+--------------------------------------------------------------*/
+
+.members div {
+	font-weight: 300;
+	color: #21596D;
+	display: inline-block;
+	margin: 0 11px;
+	width: 291px;
+	vertical-align: top;
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.members h3 {
+	border-bottom: 1px solid #005C90;
+	padding-bottom: 35px;
+}
+
+.members h4 {
+
+	font-size: 1.3em;
+	margin: 15px 0;
+	font-weight: 400;
+	text-align: center;
+
+}
+
+.members .name {
+	font-weight: 600;
+}
+
+.members p {
+
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.members a {
+
+	color: #E6BB11;
+	text-decoration: underline;
+}
+
+/*--------------------------------------------------------------
+6.0 - Projects
+--------------------------------------------------------------*/
+
+.module_blue p {
+	color: #fff;
+	font-weight: 300;
+}
+
+.single-projects h2 {
+	padding-bottom: 0px;
+}
+
+.single-projects h3 {
+	margin-top: 0;
+	m
+}
+
+.subtitle {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+/*--------------------------------------------------------------
+6.1 - Video sections
+--------------------------------------------------------------*/
+
+.full_video h3 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.full_video iframe {
+	margin: 0 auto;
+	display: block;
+	margin: 0 auto;
+	border: 13px solid #14668D;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+}
+
+.videos_2 .item_1 {
+	display: inline-block;
+}
+
+.videos_2 .item_2 {
+	float: right;
+	display: inline-block;
+}
+
+.videos_2 .item iframe {
+	width: 400px;
+	height: 300px;
+}
+
+.video_gallery #video-gallery-slider {
+	max-height: 390px;
+}
+
+.video_gallery ul {
+	height: 400px;
+}
+
+.video_gallery .slide .item {
+	display: inline-block;
+	max-width: 425px;
+}
+
+.video_gallery .slide .item iframe {
+	width: 400px;
+	height: 300px;
+}
+
+.video_gallery .slide .item_left {
+	margin-left: 35px;
+}
+
+.video_gallery .slide .item_right {
+	float: right;
+	margin-right: 35px;
+}
+
+.video_facts .video_item {
+	width: 425px;
+	display: inline-block;
+}
+
+.video_facts .rhino-container {
+	float: right;
+} 
+
+.video_facts #facts-gallery-slider {
+	width: 450px;
+	height: 310px;
+	float: right;
+	margin: 0;
+}
+
+.video_facts #facts-gallery-slider .item {
+	width: 183px;
+	display: inline-block;
+}
+
+.video_facts #facts-gallery-slider .item_left {
+	margin-left: 35px;
+}
+
+.video_facts #facts-gallery-slider .item_right {
+	float: right;
+	margin-right: 35px;
+}
+
+/*--------------------------------------------------------------
+6.2 - Maps sections
+--------------------------------------------------------------*/
+.maps_1 {
+	margin: 0 auto;
+}
+
+/* PORTRAIT */
+
+.maps_1.portrait img {
+	display: inline-block;
+	width: 300px;
+}
+
+.maps_1.portrait.with_description .text {
+	padding-left: 30px;
+	display: inline-block;
+	max-width: 630px;
+	vertical-align: top;
+}
+
+.maps_1.portrait.with_description .text h3 {
+	text-align: left;
+	margin-top: 0;
+}
+
+.maps_1.portrait.no_description img {
+	display: block;
+	margin: 0 auto;
+}
+
+/*Landscape*/
+
+.maps_1.landscape.no_description img {
+	display: block;
+	margin: 0 auto;
+}
+
+.maps_1.landscape .subtitle {
+	text-align: center;
+}
+/*--------------------------------------------------------------
+6.2.2 - 2 Maps with text
+--------------------------------------------------------------*/
+.fancybox {
+	display: inline-block;
+}
+
+.maps_1.no_description .fancybox {
+	display: block;
+}
+
+.maps_2 {
+	clear: both;
+}
+
+
+.maps_2 .item_1,
+.maps_2 .item_2 {
+	margin-right: 16px;
+}
+
+/*Landscape*/
+
+.maps_2.landscape .item_1,
+.maps_2.landscape .item_2 {
+	display: inline-block;
+	width: 454px;
+	vertical-align: top;
+}
+
+.maps_2.landscape img {
+	max-width: 450px;
+}
+
+.maps_2.landscape.with_description .text {
+	display: inline;
+	text-align: center;
+}
+
+.maps_2.landscape .subtitle {
+	text-align: center;
+}
+
+.maps_1.portrait.with_description .subtitle,
+.maps_2.portrait.with_description .subtitle {
+	text-align: left;
+}
+
+
+/*PORTRAIT*/
+.maps_2.portrait .item_1,
+.maps_2.portrait .item_2 {
+	display: inline-block;
+}
+
+.maps_2.portrait img {
+	width: 300px;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+} 
+
+.maps_2.portrait h3 {
+	margin-top: 0px;
+	padding-top: 0px;
+	text-align: left;
+}
+
+.maps_2.portrait h4 {
+	text-align: center;
+}
+
+.maps_2.portrait .maps_text {
+	width: 300px;
+	display: inline-block;
+	float: right;
+}
+
+.maps_3 .item_1,
+.maps_3 .item_2 {
+	margin-right: 20px;
+}
+
+.maps_3.portrait .item_1,
+.maps_3.portrait .item_2,
+.maps_3.portrait .item_3 {
+	width: 300px;
+	display: inline-block;
+}
+
+.maps_3 .subtitle {
+	text-align: center;
+}
+
+.maps_3 img {
+	width: 100%;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+}
+
+.maps_3.landscape .item_1,
+.maps_3.landscape .item_2 {
+	margin-right: 15px;
+}
+
+.maps .slide {
+	padding: 0 35px;
+}
+
+.maps ul .slide .item {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.maps.portrait ul .slide .item {
+	width: 266px;
+	overflow: visible;
+	margin: 0 12px;
+}
+
+
+.maps.landscape ul .slide .item {
+	width: 400px;
+}
+
+.maps img {
+	width: 100%;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+}
+
+.maps .subtitle {
+	text-align: center;
+
+}
+
+.maps .description {
+	text-align: center;
+}
+
+.maps h4 {
+	margin-bottom: 0;
+}
+
+.maps .rhino-container .item h4 {
+	text-align: center;
+}
+
+/*.maps .rest_elements_2 .item_first {
+	float: inherit;
+}
+
+.maps .rest_elements_1 .item_second {
+	float: inherit;
+}*/
+
+.maps .item_left {
+	margin: 0 17px;
+}
+
+.maps .item_right {
+	margin: 0 17px;
+}
+
+.maps .rhino-prev,
+.maps .rhino-next {
+	top: 40%;
+}
+
+/*--------------------------------------------------------------
+6.3 - Maps 
+--------------------------------------------------------------*/
+
+.maps.landscape ul.landscape {
+	max-height: 360px;
+}
+
+
+/*--------------------------------------------------------------
+6.4 - Text sections
+--------------------------------------------------------------*/
+
+.long_text .text_content {
+	-webkit-column-count: 2;
+	   -moz-column-count: 2;
+			column-count: 2;
+	-webkit-column-gap: 40px;
+	   -moz-column-gap: 40px;
+			column-gap: 40px;
+}
+
+.long_text .text_content p:first-of-type {
+	margin-top: 0;
+}
+
+.long_text .text_content ul {
+	padding-left: 20px;
+	list-style: inherit;
+}
+
+/*--------------------------------------------------------------
+6.4 - Sources and Publications
+--------------------------------------------------------------*/
+.sources_and_publications {
+	background-color: #D8D8D8;
+	background-image: none;
+	padding: 85px 0;
+}
+
+.sources_and_publications article {
+	width: 420px;
+	background-color: #fff;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+	display: inline-block;
+}
+
+.sources_and_publications ul {
+	margin: 0;
+	padding: 30px 40px;
+}
+
+.sources_and_publications .unique {
+	margin: 0 auto;
+	display: inherit;
+}
+
+.sources_and_publications .title {
+	font-weight: 400;
+	padding-top: 20px;
+}
+
+.sources_and_publications .title h3 {
+	padding-bottom: 28px;
+	padding-left: 55px;
+	margin: 0;
+	color: #fff;
+	background: url('/wp-content/themes/hgise/images/white_separator.png') repeat-x 0 51px;
+	text-align: left;
+}
+
+.sources {
+	vertical-align: top;
+}
+
+.sources .title {
+	background: #DB9249 url('/wp-content/themes/hgise/images/sources_icon.png') no-repeat 15px 25px;
+}
+
+.sources li {
+	margin: 15px 0;
+	font-size: 1.1em;
+	font-weight: 500;
+	color: #005C90;
+}
+
+.sources li:before {
+	content: url('/wp-content/themes/hgise/images/dot.png');
+	position: relative;
+	left: -20px;
+}
+
+.sources a,
+.publications a {
+	color: #005C90;
+}
+
+.publications .title {
+	background: #00718B url('/wp-content/themes/hgise/images/publications_icon.png') no-repeat 15px 25px;
+}
+
+.publications {
+	margin-left: 95px;
+}
+
+.publications li {
+	margin: 15px 0;
+}
+
+.publications li:before {
+	content: url('/wp-content/themes/hgise/images/dot.png');
+	position: relative;
+	left: -18px;
+}
+
+.publications .title_article {
+	font-size: 1.1em;
+	font-weight: 600;
+	color: #005C90;
+	margin-left: -10px;
+}
+
+.publications .author {
+	display: block;
+	font-style: oblique;
+	color: #5B5C5C;
+}
+
+.publications .media {
+	color: #5B5C5C;
+	font-weight: 300;
+}
+
+.publications li:first-child,
+.sources li:first-child {
+	margin-top: 0px;
+}
+
+.publications li:last-child,
+.sources li:last-child {
+	margin-bottom: 0px;
+}
+
+/*--------------------------------------------------------------
+6.5 - Tables sections
+--------------------------------------------------------------*/
+
+.table .header,
+.diagram .header {
+	padding: 20px 18px;
+	background: #D8D8D8 url('/wp-content/themes/hgise/images/accordeon_display.png') no-repeat 97%;
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
+	min-height: 90px;
+}
+
+.header.accordionButton.on {
+	padding: 18px;
+	background: #D8D8D8 url('/wp-content/themes/hgise/images/accordeon_hide.png') no-repeat 97%;
+}
+
+.diagram,
+.table {
+	padding: 5px 0;
+}
+
+.table .header h4 {
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+.table .header p {
+	margin: 0;
+	color: #00718B;
+}
+
+.table table {
+	width: 940px !important;
+	border-collapse: collapse;
+}
+
+.table table td {
+	padding: 0 10px;
+	border: 1px solid #00718B;
+	color: #00718B;
+}
+
+.table table th {
+	background-color: #00718B;
+	color: #fff;
+	border: 1px solid #fff;
+	padding: 0 10px;
+}
+
+.table table tr:first-child th {
+	border-top: 1px solid #3b6f87;
+}
+
+.table table tr th:first-child {
+	border-left: 1px solid #3b6f87;
+}
+
+.table table tr th:last-child {
+	border-right: 1px solid #3b6f87;
+}
+
+.table table tr:last-child th {
+	border-bottom: 1px solid #3b6f87;
+}
+
+/*--------------------------------------------------------------
+6.6 - Diagrams
+--------------------------------------------------------------*/
+.diagrams {
+	background-color: #fff;
+}
+
+.diagrams_set_title,
+.tables_set_title {
+	background-color: #fff;
+}
+
+.diagram .header h4 {
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+.diagram .header p {
+	margin: 0;
+	color: #00718B;
+}
+
+.diagram .accordionContent {
+	background: #00718B;
+}
+
+.diagram .image {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 30px;
+}
+
+.diagram img {
+	width: 300px;
+}
+
+.diagram .accordionContent {
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
+	height: 400px;
+	overflow: auto;
+
+}
+
+.accordionContent h4,
+.accordionContent .subtitle {
+	color: #DB9249;
+}
+
+.accordionContent h4 {
+	margin: 0;
+}
+
+.accordionContent .subtitle {
+	margin-bottom: 10px;
+}
+
+.diagram .diagram_description {
+	display: inline-block;
+	margin-top: 0;
+	width: 565px;
+	margin-bottom: 30px;
+	margin-left: 15px;
+}
+
+.diagram_description p {
+	color: #fff;
+	font-weight: 300;
+	margin-top: 0;
+}
+
+/*-----------------------------------------------
+module_blue
+------------------------------------------------*/
+
+.module_blue p {
+	color: #fff;
+}
+
+/*-----------------------------------------------
+footer
+------------------------------------------------*/
+
+.footer {
+	background-color: #424241;
+	padding-bottom: 10px;
+	padding-top: 20px;
+	color: #F7F7F7;
+	min-height: 206px;
+	width: 100%;
+	padding: 9px 30px 10px 30px;
+}
+
+.footer h3 {
+	color: #D58E3D;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+
+.funding {
+	display: inline-block;
+}
+
+.funding h3{
+	text-align: left;
+}
+
+.funding .widget {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.funding .widget p{
+	margin-top: 0;
+	font-weight: 300;
+	font-size: 0.9em;
+}
+
+.funding img {
+	max-height: 55px;
+	width: auto;
+}
+
+.contact {
+	display: inline-block;
+	float: right;
+	text-align: right;
+	font-weight: 200;
+}
+
+.contact h3 {
+	text-align: right;
+}
+
+.contact p {
+	margin: 0;
+	font-size: 0.9em;
+}
+
+.colophon {
+	padding-top: 20px;
+	clear: both;
+	text-align: center;
+	font-weight: 200;
+	color: #D58E3D;
+	font-size: 0.7em;
+}
