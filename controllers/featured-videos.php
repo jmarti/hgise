@@ -12,7 +12,6 @@ while ( $loop->have_posts() ) : $loop->the_post();
 					$video = get_sub_field('url');
 					echo '<li class="slide">';
 					echo $video;
-					echo 'hola';
 					echo '<span><p class="item_title">'.$title.'</p></span>';
 					echo '</a></li>';
 				endif;

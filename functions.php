@@ -292,7 +292,7 @@ function aspect_ratio($img) {
 	$image = getimagesize($img);
 	$width = $image[0];
 	$height = $image[1];
-	if ($width > $height) {
+	if ($width >= $height) {
 		return "landscape";
 	} else {
 		return "portrait";
@@ -347,11 +347,17 @@ function array_icount_values($array) {
 
 function title_and_subtitle() {
 	global $title, $subtitle;
-	if ( $title != "" ) {
+	if ( ($title != "" && $title != "_blank") || $subtitle != "" ) {
+		echo '<hgroup class="title_and_subtitle">';
+	}
+	if ( $title != "" && $title != "_blank" ) {
 		echo '<h3>'.$title.'</h3>';
-		if ( $subtitle != "" ) {
-			echo '<p class="subtitle">'.$subtitle.'</p>';
-		}
+	}
+	if ( $subtitle != "" ) {
+		echo '<h4 class="subtitle">'.$subtitle.'</h4>';
+	}
+	if ( ($title != "" && $title != "_blank") || $subtitle != "" ) {
+		echo '</hgroup>';
 	}
 }
 

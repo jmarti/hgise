@@ -16,23 +16,28 @@ else :
 	$has_description = "with_description";
 endif;
 
-//propieties builder
-$section_propieties = $has_description.' '.$module_blue;
+if ($module_separators):
+	$wrapper_classes = 'section ' . $has_description . ' ' . $module_blue;
+	$wrapper_tag = 'div';
+else:
+	$wrapper_classes = $module_blue . ' ' . $has_description . ' ' . $module_blue;;
+	$wrapper_tag = 'section';
+endif;
 
 
 //one video
 if ( $i == 1 ) : 
-	echo '<section class="video full_video '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="video full_video '. $wrapper_classes . '"><div class="wrapper">';
 	while ( have_rows('video') ) : the_row();
 		$video_title = get_sub_field('title');
-		if ($has_description == "no_description") :
+		if ($has_description == "no_description" && $video_title != '_blank') :
 			echo '<h3>'.$video_title.'</h3>';
 			if ( $subtitle != "" ) :
 				echo '<p class="subtitle">'.$subtitle.'</p>';
 			endif;
 		endif;
 		the_sub_field('url');
-		if ($has_description == "with_description") :
+		if ($has_description == "with_description" && $video_title != '_blank') :
 			echo '<div class="text"><h3>'.$video_title.'</h3>';
 		endif;
 	endwhile;
@@ -43,12 +48,12 @@ if ( $i == 1 ) :
 			echo '<div class="description">'.$description.'</div>';
 		endif;
 		echo download_link();
-	echo '</div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 
 
 //two maps portrait
 elseif ( $i == 2 ) : 
-	echo '<section class="video videos_2 '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="video videos_2 '.$wrapper_classes.'"><div class="wrapper">';
 	$i = 0;
 	if ( $has_description == "no_description" ) :
 		echo title_and_subtitle();
@@ -65,14 +70,14 @@ elseif ( $i == 2 ) :
 		echo title_and_subtitle();
 		echo '<div class="description">'.$description.'</div>';
 	endif;
-	echo '</div></div></section>';
+	echo '</div></div></' . $wrapper_tag . '>';
 
 
 //gallery landscape (2 elements per slide)
 elseif ( $i >= 3 ) :
 	++$gallery_n;
 	$i = 1;
-	echo '<section class="video video_gallery '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="video video_gallery '.$wrapper_classes.'"><div class="wrapper">';
 	echo title_and_subtitle();
 	$p = "left";
 	echo '<ul id="video-gallery-slider-'.$gallery_n.'"><li class="slide">';
@@ -93,6 +98,6 @@ elseif ( $i >= 3 ) :
 		echo '<div class="description">'.$description.'</div>';
 	endif;
 	echo download_link();
-	echo '</div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 endif;
 ?>

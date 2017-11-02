@@ -18,6 +18,7 @@ while (has_sub_field('maps')) :
 	++$j;
 endwhile;
 $aspect_ratio = array_icount_values($aspect_ratio);
+
 if ($aspect_ratio['portrait'] > $aspect_ratio['landscape']) :
 	$aspect_ratio = "portrait";
 else :
@@ -31,41 +32,39 @@ else :
 	$has_description = "with_description";
 endif;
 
-//propieties builder
-$section_propieties = $aspect_ratio.' '.$has_description.' '.$module_blue;
+if ($module_separators):
+	$wrapper_tag = 'div';
+	$wrapper_classes = 'section ' . $aspect_ratio.' '.$has_description;
+else:
+	$wrapper_tag = 'section';
+	$wrapper_classes = $module_blue;
+endif;
 
 
 //one map
 if ( $i == 1 ) : 
-	echo '<section class="maps maps_'.$j.' '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="maps maps_'.$j.' '.$wrapper_classes.'"><div class="wrapper">';
 	while ( have_rows('maps') ) : the_row();
 		$map_title = get_sub_field('map_title');
 		$image = get_sub_field('map');
 		$image_url = $image['url'];
-		if ($has_description == "no_description") :
-			echo '<h3>'.$map_title.'</h3>';
-			if ( $subtitle != "" ) :
-				echo '<p class="subtitle">'.$subtitle.'</p>';
-			endif;
-		endif;
+		echo title_and_subtitle();
 		echo '<a class="fancybox" href="'.$image_url.'"><img src="'.$image_url.'"></a>';
-		if ($has_description == "with_description") :
-			echo '<div class="text"><h3>'.$map_title.'</h3>';
+		if ($map_title != '' && $map_title != '_blank'):
+			echo '<h5>'.$map_title.'</h5>';
 		endif;
 	endwhile;
-		if ($has_description == "with_description") :
-			if ( $subtitle != "" ) :
-				echo '<p class="subtitle">'.$subtitle.'</p>';
-			endif;
-			echo '<div class="description">'.$description.'</div>';
-		endif;
-		echo download_link();
-	echo '</div></section>';
+	
+	if ($has_description == "with_description") :
+		echo '<div class="description">'.$description.'</div>';
+	endif;
+	echo download_link();
+	echo '</div></' . $wrapper_tag . '>';
 
 
 //two maps portrait
 elseif ( $i == 2 && $aspect_ratio == "portrait" ) : 
-	echo '<section class="maps maps_'.$j.' '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="maps maps_'.$j.' '.$wrapper_classes.'"><div class="wrapper">';
 	$i = 0;
 	if ( $has_description == "no_description" ) :
 		echo title_and_subtitle();
@@ -77,7 +76,7 @@ elseif ( $i == 2 && $aspect_ratio == "portrait" ) :
 		$image_url = $image['url'];
 		echo '<div class="item_'.$i.'">';
 		echo '<a class="fancybox" href="'.$image_url.'" rel="galery_'.$module_counter.'"><img src="'.$image_url.'"></a>';
-		echo '<h4>'.$map_title.'</h4></div>';
+		echo '<h5>'.$map_title.'</h5></div>';
 	endwhile;
 	if ( $has_description == "with_description" ) :
 		echo '<div class="maps_text">';
@@ -85,12 +84,12 @@ elseif ( $i == 2 && $aspect_ratio == "portrait" ) :
 		echo '<div class="description">'.$description.'</div>';
 	endif;
 	echo download_link();
-	echo '</div></div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 
 
 //twree maps portrait or two maps landscape
 elseif ( ( $i == 2 && $aspect_ratio == "landscape" ) || ( $i == 3 && $aspect_ratio == "portrait" ) ) :
-	echo '<section class="maps maps_'.$j.' '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="maps maps_'.$j.' '.$wrapper_classes.'"><div class="wrapper">';
 	$i = 0;
 	echo title_and_subtitle();
 	while ( have_rows('maps') ) : the_row();
@@ -100,23 +99,23 @@ elseif ( ( $i == 2 && $aspect_ratio == "landscape" ) || ( $i == 3 && $aspect_rat
 		$image_url = $image['url'];
 		echo '<div class="item_'.$i.'">';
 		echo '<a class="fancybox" href="'.$image_url.'" rel="galery_'.$module_counter.'"><img src="'.$image_url.'"></a>';
-		echo '<h4>'.$map_title.'</h4></div>';
+		echo '<h5>'.$map_title.'</h5></div>';
 	endwhile;
 	if ( $has_description == "with_description" ) :
 		echo '<div class="description">'.$description.'</div>';
 	endif;
 	echo download_link();
-	echo '</div></div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 
 
 //gallery landscape (2 elements per slide)
 elseif ( $i >= 3 && $aspect_ratio == "landscape" ) :
 	++$gallery_n;
 	$i = 1;
-	echo '<section class="maps '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="maps '.$wrapper_classes.'"><div class="wrapper">';
 	echo title_and_subtitle();
 	$p = "left";
-	echo '<ul id="map-gallery-slider-'.$gallery_n.'" class="'.$aspect_ratio.'"><li class="slide">';
+	echo '<ul id="map-gallery-slider-'.$gallery_n.'" class="map-gallery-slider '.$aspect_ratio.'"><li class="slide">';
 	while ( have_rows('maps') ) : the_row();
 		if ( ($i % 2 ) == 1 && $i != 1 ) :
 			echo '</li><li class="slide">';
@@ -125,10 +124,9 @@ elseif ( $i >= 3 && $aspect_ratio == "landscape" ) :
 		$map_title = get_sub_field('map_title');
 		$image = get_sub_field('map');
 		$image_url = $image['url'];
-		$image_new_height = img_resize($image_url,400,false);
-		echo '<div class="item item_'.$p.'" style="height:'.$image_new_height.'px">';
+		echo '<div class="item item_'.$p.'">';
 		echo '<a href="'.$image_url.'" class="fancybox" rel="gallery_'.$module_counter.'"><img src="'.$image_url.'"></a>';
-		echo '<h4>'.$map_title.'</h4></div>';
+		echo '<h5>'.$map_title.'</h5></div>';
 		++$i;
 		$p = "right";
 	endwhile;
@@ -137,7 +135,7 @@ elseif ( $i >= 3 && $aspect_ratio == "landscape" ) :
 		echo '<div class="description">'.$description.'</div>';
 	endif;
 	echo download_link();
-	echo '</div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 
 //gallery portrait (3 elements per slide)
 elseif ( $i >= 4 && $aspect_ratio == "portrait" ) :
@@ -149,9 +147,9 @@ elseif ( $i >= 4 && $aspect_ratio == "portrait" ) :
 	$rest_elements = $slides * $items_per_slide  - $items;
 	$slides_counter = 0;
 	$i = 1;
-	echo '<section class="maps '.$section_propieties.'"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="maps '.$wrapper_classes.'"><div class="wrapper">';
 	echo title_and_subtitle();
-	echo '<ul id="map-gallery-slider-'.$gallery_n.'" class="'.$aspect_ratio.'"><li class="slide">';
+	echo '<ul id="map-gallery-slider-'.$gallery_n.'" class="map-gallery-slider '.$aspect_ratio.'"><li class="slide">';
 	while ( have_rows('maps') ) : the_row();
 		if ( ( $i % $items_per_slide  ) == 1 && $i != 1 ) :
 			++$slides_counter ;
@@ -171,7 +169,7 @@ elseif ( $i >= 4 && $aspect_ratio == "portrait" ) :
 		$image_url = $image['url'];
 		echo '<div class="item item_'.$i.' item_'.$p.'">';
 		echo '<a href="'.$image_url.'" class="fancybox" rel="gallery_'.$module_counter.'"><img src="'.$image_url.'"></a>';
-		echo '<h4>'.$map_title.'</h4></div>';
+		echo '<h5>'.$map_title.'</h5></div>';
 		++$i;
 	endwhile;
 	echo '</li></ul>';
@@ -179,7 +177,7 @@ elseif ( $i >= 4 && $aspect_ratio == "portrait" ) :
 		echo '<div class="description">'.$description.'</div>';
 	endif;
 	echo download_link();
-	echo '</div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 endif;
 unset($images_url);
 unset($aspect_ratio);

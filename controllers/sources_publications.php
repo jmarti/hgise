@@ -1,5 +1,12 @@
 <?php
-echo '<section class="sources_and_publications '.$module_blue.'"><div class="wrapper">';
+if ($module_separators):
+	$wrapper_classes = 'section';
+	$wrapper_tag = 'div';
+else:
+	$wrapper_classes = $module_blue;
+	$wrapper_tag = 'section';
+endif;
+echo '<' . $wrapper_tag . ' class="sources_and_publications ' . $wrapper_classes . '"><div class="wrapper">';
 if ( have_rows('source') ) :
 	echo '<article class="sources '.$sources_and_publications.'">';
 	echo '<div class="title"><h3>Sources</h3></div>';
@@ -61,7 +68,7 @@ if ( have_rows( 'publication' ) ) :
 	endwhile;
 	echo '</ul></article>';
 endif;
-echo '</div></section>';
+echo '</div></' . $wrapper_tag . '>';
 
 
 ?>

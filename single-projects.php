@@ -14,6 +14,7 @@ get_header();
 	// check if the flexible content field has rows of data
 	if( have_rows('project_content') ):
 		$module_counter = 0;
+		$module_separators = false;
 		$diagrams_counter = 0;
 		$pending_diagrams = false;
 		$tables_counter = 0;
@@ -27,19 +28,46 @@ get_header();
 
 	    // loop through the rows of data
 	    while ( have_rows('project_content') ) : the_row();
-	    	if ( ( get_row_layout() != "diagrams" || $diagrams_counter == 0 ) || ( get_row_layout() != "tables" || $tables_counter == 0 ) ):
-		    	++$module_counter;
-	    	endif;
+	    	if ( !$module_counter && get_row_layout() == "module_separator"):
+	    		$module_separators = true;
+    		endif;
+    		if( $module_separators ):
+    			if(get_row_layout() == "module_separator"):
+    				if($module_counter):
+    					if($module_counter % 3 == 0):
+    						$module_blue = "module_blue";
+						else:
+							$module_blue = "";
+						endif;
+    					echo '</section><section class="big_section ' . $module_blue .'">';
+    				else:
+    					echo '<section class="big_section">';
+    				endif;
+    				++$module_counter;
+    			endif;
+			else:
+		    	if ( ( get_row_layout() != "diagrams" || $diagrams_counter == 0 ) || ( get_row_layout() != "tables" || $tables_counter == 0 ) ):
+			    	++$module_counter;
+		    	endif;
+		    endif;
 	    	if ( get_row_layout() != "diagrams" && $diagrams_counter != $diagrams_c && $diagrams_counter != 0 ) :
-	    		echo '</div></section>';
+	    		echo '</div>';
+	    		if( $module_separators ):
+	    			echo '</section>';
+	    		endif;
 	    		$pending_diagrams = true;
 	    	endif;
 	    	if ( get_row_layout() != "tables" && $tables_counter != $tables_c && $tables_counter != 0 ) :
-	    		echo '</div></section>';
+	    		echo '</div>';
+	    		if( $module_separators ):
+	    			echo '</section>';
+	    		endif;
 	    		$pending_tables = true;
 	    	endif;
-			if ($module_counter % 3 == 0):
+			if (!$module_separators && $module_counter % 3 == 0):
 				$module_blue = "module_blue";
+			else:
+				$module_blue = "";
 			endif;
 			
 			if( get_row_layout() == 'videos' ) : 
@@ -90,10 +118,12 @@ get_header();
 					</div>
 				</section>
 			<?php
-	       	elseif( get_row_layout() == 'maps' ) :
+	    elseif( get_row_layout() == 'maps' ) :
 				include $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/hgise/controllers/maps.php";
 			elseif( get_row_layout() == 'long_text' ) :
 				include $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/hgise/controllers/text.php";
+			elseif( get_row_layout() == 'free_text' ) :
+				include $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/hgise/controllers/free_text.php";
 			elseif( get_row_layout() == 'sources' ) :
 				include $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/hgise/controllers/sources_publications.php";
 			elseif( get_row_layout() == 'diagrams' ) :
@@ -103,6 +133,9 @@ get_header();
 	        endif;
 			unset($module_blue);
 	    endwhile;
+	    if( $module_separators ):
+	    	echo '</section>';
+	    endif;
 
 	else :
 

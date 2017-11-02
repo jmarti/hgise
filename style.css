@@ -61,6 +61,13 @@ section {
 	background-color: #fff;
 }
 
+section:after,
+.section:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 article,
 aside,
 details,
@@ -78,6 +85,10 @@ ol,
 ul {
 	list-style: none;
 	padding: 0;
+}
+
+p {
+	margin: 0 0 10px 0;
 }
 
 table { /* tables still need 'cellspacing="0"' in the markup */
@@ -115,8 +126,6 @@ a:active {
 a img {
 	border: 0;
 }
-
-
 
 /*--------------------------------------------------------------
 2.0 - Typography
@@ -161,10 +170,18 @@ h4 {
 	color: #005C90;
 }
 
+h5 {
+	font-size: 0.8em;
+	font-family: 'Tienne', serif;
+	font-weight: 300;
+	color: #005C90;
+}
+
 .module_blue h1,
 .module_blue h2,
 .module_blue h3,
-.module_blue h4 {
+.module_blue h4,
+.module_blue h5 {
 	color: #F7F7F7;
 }
 
@@ -199,7 +216,25 @@ section {
 	padding-bottom: 60px;
 }
 
-section.wrapper {
+section.big_section {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.section {
+	margin-top: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+h2 + section,
+h2 + .section,
+h2 + section.big_section {
+	padding-top: 0;
+}
+
+section.wrapper,
+.section.wrapper {
 	padding-top: 0;
 }
 
@@ -464,7 +499,7 @@ li.transport.ui-state-active a {
 	display: inline-block;
 	width: 740px;
 	background-color: #fff;
-	min-height: 435px;
+	min-height: 462px;
 	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.55);
 }
 
@@ -517,13 +552,8 @@ li.transport.ui-state-active a {
 }
 
 .about .description {
-	-webkit-column-count: 2;
-	   -moz-column-count: 2;
-			column-count: 2;
-	-webkit-column-gap: 40px;
-	   -moz-column-gap: 40px;
-			column-gap: 40px;
-	margin-bottom: 40px;
+	margin: 0 auto 40px auto;
+	max-width: 600px;
 }
 
 .about ul {
@@ -555,7 +585,7 @@ li.transport.ui-state-active a {
 	color: #21596D;
 	display: inline-block;
 	margin: 0 11px;
-	width: 291px;
+	width: 213px;
 	vertical-align: top;
 	text-align: center;
 	padding-bottom: 25px;
@@ -601,17 +631,26 @@ li.transport.ui-state-active a {
 }
 
 .single-projects h2 {
-	padding-bottom: 0px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 60px;
 }
 
 .single-projects h3 {
 	margin-top: 0;
-	m
 }
 
 .subtitle {
 	margin-top: 0;
 	margin-bottom: 20px;
+}
+
+.single-projects .title_and_subtitle {
+	margin-bottom: 20px;
+}
+
+.single-projects .title_and_subtitle .subtitle {
+	margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -728,6 +767,10 @@ li.transport.ui-state-active a {
 	margin-top: 0;
 }
 
+.maps_1.portrait.with_description .text .description {
+	text-align: left;
+}
+
 .maps_1.portrait.no_description img {
 	display: block;
 	margin: 0 auto;
@@ -809,7 +852,7 @@ li.transport.ui-state-active a {
 	text-align: left;
 }
 
-.maps_2.portrait h4 {
+.maps_2.portrait h5 {
 	text-align: center;
 }
 
@@ -829,6 +872,7 @@ li.transport.ui-state-active a {
 .maps_3.portrait .item_3 {
 	width: 300px;
 	display: inline-block;
+	vertical-align: top;
 }
 
 .maps_3 .subtitle {
@@ -843,6 +887,26 @@ li.transport.ui-state-active a {
 .maps_3.landscape .item_1,
 .maps_3.landscape .item_2 {
 	margin-right: 15px;
+}
+
+.maps_3 h5 {
+	text-align: center;
+}
+
+.maps .map-gallery-slider {
+	margin: 10px 0 0 0;
+}
+
+.maps .map-gallery-slider .slide {
+	display: none;
+}
+
+.maps .map-gallery-slider .slide:first-of-type {
+	display: block;
+}
+
+.maps .map-gallery-slider.slider-loaded .slide {
+	display: block;
 }
 
 .maps .slide {
@@ -862,7 +926,7 @@ li.transport.ui-state-active a {
 
 
 .maps.landscape ul .slide .item {
-	width: 400px;
+	width: 360px;
 }
 
 .maps img {
@@ -876,58 +940,53 @@ li.transport.ui-state-active a {
 }
 
 .maps .description {
+	max-width: 640px;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
-.maps h4 {
+section.big_section .maps .description {
+	margin-bottom: 25px;
+}
+
+section.big_section .maps:last-child .description {
 	margin-bottom: 0;
 }
 
-.maps .rhino-container .item h4 {
+.maps h5 {
+	margin: 10px 0 15px 0;
+}
+
+.maps .map-gallery-slider .item h5 {
 	text-align: center;
 }
 
-/*.maps .rest_elements_2 .item_first {
-	float: inherit;
-}
-
-.maps .rest_elements_1 .item_second {
-	float: inherit;
-}*/
-
 .maps .item_left {
-	margin: 0 17px;
+	margin: 0 27px 0 47px;
 }
 
 .maps .item_right {
-	margin: 0 17px;
+	margin: 0 47px 0 27px;
 }
 
 .maps .rhino-prev,
 .maps .rhino-next {
-	top: 40%;
+	top: 38%;
 }
 
 /*--------------------------------------------------------------
 6.3 - Maps 
 --------------------------------------------------------------*/
 
-.maps.landscape ul.landscape {
-	max-height: 360px;
-}
-
-
 /*--------------------------------------------------------------
 6.4 - Text sections
 --------------------------------------------------------------*/
 
 .long_text .text_content {
-	-webkit-column-count: 2;
-	   -moz-column-count: 2;
-			column-count: 2;
-	-webkit-column-gap: 40px;
-	   -moz-column-gap: 40px;
-			column-gap: 40px;
+	margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.65;
 }
 
 .long_text .text_content p:first-of-type {
@@ -1060,11 +1119,10 @@ li.transport.ui-state-active a {
 	padding: 20px 18px;
 	background: #D8D8D8 url('/wp-content/themes/hgise/images/accordeon_display.png') no-repeat 97%;
 	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
-	min-height: 90px;
+	max-height: 90px;
 }
 
-.header.accordionButton.on {
-	padding: 18px;
+.header.accordionButton.opened {
 	background: #D8D8D8 url('/wp-content/themes/hgise/images/accordeon_hide.png') no-repeat 97%;
 }
 
@@ -1130,10 +1188,17 @@ li.transport.ui-state-active a {
 	background-color: #fff;
 }
 
+.module_blue .diagrams,
+.module_blue .diagrams_set_title,
+.module_blue .tables_set_title {
+	background-color: transparent;
+}
+
 .diagram .header h4 {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
+	color: #005C90;
 }
 
 .diagram .header p {
@@ -1143,6 +1208,10 @@ li.transport.ui-state-active a {
 
 .diagram .accordionContent {
 	background: #00718B;
+}
+
+.module_blue .diagram .accordionContent {
+	background-color: #f4f4f4;
 }
 
 .diagram .image {
@@ -1159,9 +1228,9 @@ li.transport.ui-state-active a {
 	display: inline-block;
 	width: 100%;
 	padding: 20px;
-	height: 400px;
+	height: 450px;
 	overflow: auto;
-
+	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.35);
 }
 
 .accordionContent h4,
@@ -1189,6 +1258,10 @@ li.transport.ui-state-active a {
 	color: #fff;
 	font-weight: 300;
 	margin-top: 0;
+}
+
+.module_blue .diagram_description p {
+	color: #333;
 }
 
 /*-----------------------------------------------

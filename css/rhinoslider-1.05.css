@@ -7,15 +7,6 @@
   * http://rhinoslider.com/license/
   */
 
-
-.portrait .rhino-container {
- 	height: 500px !important;
-}
-
-.landscape .rhino-container {
-	height: 360px !important;
-}
-
 .rhino-btn {
 	background: url('../images/prev_next_orange.png') 0 0 no-repeat;
 	z-index: 10;

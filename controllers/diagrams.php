@@ -2,13 +2,21 @@
 
 $title = get_sub_field('title');
 $subtitle = get_sub_field('subtitle');
+$opened = get_sub_field('opened');
 ++$diagrams_counter;
+if ($module_separators):
+	$wrapper_tag = 'div';
+	$wrapper_classes = 'section';
+else:
+	$wrapper_tag = 'section';
+	$wrapper_classes = $module_blue;
+endif;
 if ( $diagrams_counter == 1 || $pending_diagrams == true ):
-	echo '<section class="diagrams"><div class="wrapper">';
+	echo '<' . $wrapper_tag . ' class="diagrams ' . $wrapper_classes . '"><div class="wrapper">';
 	echo '<h3 class="diagrams_set_title">Diagrams</h3>';
 endif;
 echo '<article class="diagram">';
-echo '<div class="header accordionButton"><h4>'.$title.'</h4>';
+echo '<div class="header accordionButton' . ($opened ? ' opened' : '') . '"><h4>'.$title.'</h4>';
 if ($subtitle != "") :
 	echo '<p class="small_description">'.$subtitle.'</p>';
 endif;
@@ -31,7 +39,7 @@ while (have_rows('diagram')) : the_row();
 endwhile;
 echo '</div></article>';
 if ( $diagrams_counter == $diagrams_c ) :
-	echo '</div></section>';
+	echo '</div></' . $wrapper_tag . '>';
 endif;
 	
 	
